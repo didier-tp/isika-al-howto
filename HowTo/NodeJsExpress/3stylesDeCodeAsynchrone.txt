@@ -1,0 +1,11 @@
+Quelque soit le langage utilisé (javascript ou typescript),
+Le code asynchrone de l'application peut être basé sur un ou plusieurs des styles suivants:
+
+- plusieurs niveaux d'imbrication de callbacks 
+  ancien style de plus en plus déconseillé
+
+- Promise et .then(...).then(...).catch(...)
+  c'est déjà mieux
+
+- async/await avec Promise explicite ou implicite
+  idéal qand c'est possible

@@ -1,0 +1,22 @@
+Une application "backend/nodeJs/express" aura éventuellement besoin d'être sécurisée (SELON LE CONTEXTE).
+
+- quelquefois/rarement sans aucune sécurité nécessaire 
+  (en début de développement ou en tp, application très simple et protégée par api-gateway )
+
+- application ayant (rarement) besoin de se sécuriser entièrement par elle même 
+ (via librairie jsonwebtoken et/ou passportjs et éventuels utilisation de bcrypt)
+
+- application en partie protégée par "api-gateway et oauth2_ou_oidc" mais devant effectuer
+  quelques contrôles supplémentaires (username == propriétaire des données ??? , 
+                                      droits/scopes suffisants pour utilisateur authentifié???)
+  Ce cas fréquent nécessite une infrastructure évoluée (api-gateway + service d'authentification oauth2/oidc ou équivalent)
+
+
+==============================
+
+Dans la plupart des cas, la sécurisation de l'application passera par quelques vérifications :
+"username" et "scopes/privilèges" ou "roles" 
+dans 
+  - jetons JWT 
+   ou bien 
+  - champs x-username / x-scopes ou autres d'une requête interceptée et enrichie par un api-gateway .

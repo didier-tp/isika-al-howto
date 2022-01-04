@@ -1,0 +1,22 @@
+Nombreuses variantes d'accès aux données (depuis appli node/express):
+---------------------------------------------------------------------
+
+A) base embarquée sqlLite ou ...
+   - accès direct via api de bas niveau
+   - accès indirect via api "ORM" évoluée de type sequelize 
+
+B) base mongoDB locale ou distante 
+   - accès direct via api "mongo" de bas niveau
+   - accès indirect l'api "ODM" évoluée "mongoose" 
+
+
+C) base relationnelle locale ou distante (ex: mysql/mariadb , postgresql , ...)
+   - accès direct via une api spécifique de bas niveau
+   - accès indirect via api "ORM" évoluée de type sequelize (ou TypeORM ou Prisma ou ...)
+
+=========================================
+D'éventuels objets spécialisés dans la persistance des données (DAO = Data Access Object )
+ne sont envisageables dans un contexte nodeJs qu'en mode "asynchrone" avec du code idéalement basé sur des "Promise" .
+Ces "DAO" fortement conseillés pourront soit :
+ - être spécifiques à une technologie (ex: mongoose ou sequelize) 
+ - être plus abstraits/polyvalents/génériques et alors à la fois plus réutilisables et plus complexes à coder/maintenir 

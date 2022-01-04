@@ -1,0 +1,16 @@
+Une application "backend/nodeJs/express" peut être codée de l'une des façons suivantes (A ou B ou C)
+
+A - appli entièrement en javascript et avec des modules commonjs (module.exports.xxx=xxx et const mx = require("./xxx") )
+Cette solution historiquement possible dès l'origine de node et npm est la plus simple et la plus connue.
+Cela convient très bien pour les petits projets simples.
+
+B - appli entièrement en typescript et avec des modules es2015 ( import { aa , bb } from './xxx' et export ... dans fichiers .ts )
+Cette solution est plus orientée objet , plus rigoureuse et plus moderne mais elle complexifie un peu la structure du projet.
+Tous les fichiers .ts doivent être transformés en .js via tsc avec tsconfig.json comportant "module" : "commonjs"
+Généralement .ts rangés dans répertoire "src" et .js générés dans répertoire "dist" 
+Autrement dit, import { aa , bb } from './xxx' dans vode source typescript transformé en const mx = require("./xxx") des .js construits
+Besoin de npm install -s tslib et de npm install --save-dev @types/yyy en complément de chaque npm install -s yyy
+
+C - appli en javascript et avec des modules es2015 ( import { aa , bb } from './xxx' et export ... dans fichiers .mjs )
+Cette solution intermédiaire (plus moderne que la A , un peu plus simple et un peu moins rigoureuse que la B)
+nécessite une version récente de nodeJs (voir documentations sur "esm")
