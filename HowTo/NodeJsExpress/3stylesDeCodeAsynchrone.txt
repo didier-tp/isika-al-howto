@@ -1,5 +1,5 @@
 Quelque soit le langage utilisé (javascript ou typescript),
-Le code asynchrone de l'application peut être basé sur un ou plusieurs des styles suivants:
+Le code asynchrone d'une application peut être basé sur un ou plusieurs des styles suivants:
 
 - plusieurs niveaux d'imbrication de callbacks 
   ancien style de plus en plus déconseillé

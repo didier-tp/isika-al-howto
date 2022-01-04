@@ -1,0 +1,24 @@
+Des themes compatibles "bootstrap 5" (sans jquery) sont potentiellement une bonne source d'inspiration.
+Il faudra cependant beaucoup les adapter pour pouvoir les utiliser partiellement dans une application angular.
+Ex: <a class="nav-link" href="#products">Products</a> 
+  ==> <a class="nav-link" routerLink="/products">Products</a> 
+
+
+---------------------
+https://themewagon.com/theme-framework/bootstrap-5/ ???
+https://technext.github.io/ensurance/v1.0.0/index.html#contact ???
+--------------------
+
+intégration dans angular
+------------------------
+ngx-bootstrap ok
+ngx-popperjs ? (à tester)
+
+https://allenhwkim.medium.com/angular-syntax-highlighted-code-with-prism-4b9fce7364dd ???? (à tester)
+https://techincent.com/code-syntax-highlighter-angular-with-prism-js/ ???? (à tester)
+
+
+------------------
+minsucules bibliothèques javascript utilitaires:
+https://is.js.org/ 
+https://lodash.com/

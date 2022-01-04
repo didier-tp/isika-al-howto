@@ -1,0 +1,13 @@
+Bien que lors de la soutenance une application "jolie" soit idéale à présenter , il faut par ordre de priorité :
+1 - que ça fonctionne de bout en bout (communication effective entre frontend , api_rest et mongodb)
+2 - que le code soit bien structuré (compréhensible , simple à améliorer / débugger )
+3 - les principales fonctionnalités soient présentes
+4 - soigner l'ergonomie de l'interface graphique (menus "clairs" et "utilisation simple/intuitive") , comportement "responsive" .
+5 - peaufiner le look du frontend (thème , styles , ...)
+
+-------------
+
+Bien sûr , tout cela se fera de manière itérative :
+- premières tentatives , premières compréhensions des problèmes à résoudre
+- corrections / restructurations 
+- peaufinages en derniers (sans casser ce qui fonctionne et donc en sauvegardant les anciennes versions sous git)

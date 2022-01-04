@@ -1,0 +1,6 @@
+Le frontend sera généralement codé en s'appuyant sur une version récente d'angular (12 ou plus).
+Ceci implique :
+ - le choix d'éventuelles api complémentaires devant êtres fiables et compatibles avec angular
+ - le choix d'éventuels thèmes "bootstrap" sans dépendance vis à vis de jquery (jquery déconseillé avec angular)
+ - d'éventuelles adapations "pour_angular" de certains composants (ex: ngx-bootstrap ou équivalent pour popups , onglets, ...)
+   et de la mise en page (compatible routing angular, ...) 

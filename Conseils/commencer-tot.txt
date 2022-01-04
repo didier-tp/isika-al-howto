@@ -1,0 +1,10 @@
+Commencer à travailler le plus tôt possible sur les différents aspects du projet.
+En parallèle : 
+ - trouver des idées (fonctionnalités)  et ébaucher des diagrammes d'architecture
+ - commencer à coder le frontEnd (structure , thémes/styles , navigation)
+ - commencer à coder le(s) backend(s) : API_REST + test via postman + accès mongoDB + api distante
+Sachant qu'il faudra plus tard :
+  - faire communiquer ces différentes parties entre elles (en local , puis sur le cloud)
+  - peaufiner le look 
+  - corriger les bugs
+  - garder un peu de temps pour d'éventuels entretiens (pré-embauche ou ...) et les imprévus

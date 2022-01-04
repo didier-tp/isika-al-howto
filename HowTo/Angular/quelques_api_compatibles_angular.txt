@@ -1,0 +1,3 @@
+* ngx-bootstrap
+* ng2-charts (https://www.npmjs.com/package/ng2-charts , https://www.positronx.io/angular-chart-js-tutorial-with-ng2-charts-examples/ ) 
+* ....

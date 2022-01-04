@@ -1,0 +1,64 @@
+<form role="form" #formPublication="ngForm" 
+     method="POST" encType="multipart/form-data"  id="formUpload" >
+...
+ <input type="text" class="form-control" required
+                    name="titre" [(ngModel)]="selectedPublication.titre" />
+...
+ <input type="file" class="form-control" 
+                     id="f_imageFile" #f_imageFile
+                    (change)="handleImageFileInput($event.target.files)"/>
+             {{selectedPublication.fichier_image_name}}
+...
+<input  type="submit" class="btn my-bg-primary text-white" 
+                   [disabled]="!formPublication.form.valid" value="Publier" 
+                   (click)="onSubmit()" /> 
+...
+</form>
+
+============================================
+...
+export class AdminNewsComponent implements OnInit {
+...
+
+
+@ViewChild('f_imageFile' , {static : false}) 
+ imageFileInput : any ;
+
+resetFileInputs(){
+  if(this.imageFileInput && this.imageFileInput.nativeElement){
+     // console.log("reset imageFileInput")
+      this.imageFileInput.nativeElement.value = "";
+  }
+ }
+
+handleImageFileInput(files: FileList) {
+    this.imageFileToUpload = files.item(0);
+    this.selectedPublication.fichier_image_name=this.imageFileToUpload.name; //.name , .size , .type
+  } 
+
+...
+
+onSubmit(){
+     const formData: FormData = new FormData();
+    formData.append('imageFile' , this.imageFileToUpload); //may be null
+    formData.append('publication' , JSON.stringify(this.selectedPublication));
+    //NB: JSON "publication" data will be sent as a subpart of formData !!!!	
+    this._publicationService.uploadPublicationFormaDataObservable(formData)
+        .subscribe(
+          sentPublication => { console.log("sent publication:" + JSON.stringify(sentPublication));
+                               this.msgSaveOrUpdate="publication bien envoyée";
+                               if(this.selectedPublication._id==null){
+                                  this.selectedPublication._id = sentPublication._id;
+                               }
+                              } ,
+          error => {console.log(error); this.msgSaveOrUpdate = "erreur" } 
+          );
+
+}
+
+...
+}
+
+
+
+       

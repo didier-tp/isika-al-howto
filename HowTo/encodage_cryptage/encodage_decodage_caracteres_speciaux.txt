@@ -1,0 +1,37 @@
+Ci dessous un moyen d'encoder et décoder proprement des chaines de caractères comportant des caractères gênants (de type / & # à é  )
+pour bien communiquer entre angular et nodeJS.
+L'astuce consiste à utiliser window.atob() et window.btoa() bien reconnus coté angular
+et d'utiliser Buffer.from(....).toString('base64') et Buffer.from(...., 'base64').toString(); bien reconnus coté nodeJs .
+
+Exemple complet coté angular:
+// double encodage string en urlEncoded puis en base64 du coté angular:
+    let chaineComplexeAvecCaracteresGenants="abc é è ù # $ à / & < > ; + ...";
+    let urlEncodedString = encodeURIComponent(chaineComplexeAvecCaracteresGenants)
+    console.log("urlEncodedString="+urlEncodedString);
+    var sEnBase64 = window.btoa(urlEncodedString);
+    console.log("sEnBase64="+sEnBase64);
+    // double decodage base64 en urlEncoded  puis string du coté angular:
+    var urlEncodedStr = window.atob(sEnBase64);
+    console.log("urlEncodedStr="+urlEncodedStr);
+    var str = decodeURIComponent(urlEncodedStr);
+    console.log("str="+str);
+    let url = this._apiBaseUrl + "/public-xyz" + "?p="+sEnBase64;
+
+Exemple complet coté nodeJs:
+       let sEnBase64 = req.query.p; //récupération de ...?p=valeurEnBase64
+	console.log("en base64 p="+sEnBase64);
+	let strUrlEncoded=Buffer.from(sEnBase64, 'base64').toString();
+	console.log("strUrlEncoded="+strUrlEncoded);
+	let str = decodeURIComponent(strUrlEncoded);
+        console.log("str="+str);
+	
+	//si besoin encode urlEncoded coté nodeJs:
+	let urlEncodedString = encodeURIComponent(str)
+        console.log("urlEncodedString="+urlEncodedString);
+	//si besoin encodage base64 du coté nodeJs:
+	let s2EnBase64 = Buffer.from(urlEncodedString).toString('base64');
+	console.log("s2EnBase64="+s2EnBase64);
+	let str2UrlEncoded=Buffer.from(s2EnBase64, 'base64').toString();
+	console.log("str2UrlEncoded="+str2UrlEncoded);
+	let str2 = decodeURIComponent(str2UrlEncoded);
+       console.log("str2="+str2);
