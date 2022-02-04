@@ -1,0 +1,45 @@
+Upload_file_node_Express
+=========================
+Avec multer ---> à tester ...
+===========================
+Sans multer :
+
+dans server.js:
+const fileUpload = require('express-fileupload');
+
+app.use(express.static('front-end'));
+
+app.use(fileUpload({
+  limits: { fileSize: 5 * 1024 * 1024 },
+}));
+
+...
+
+
+/*{ categorie : "" , titre : "" , fichier_image : null ,  resume : "" 
+    fichier_details_name : null , texte_complet : null , lien_externe : null , date : "2018-06-01", statut : "nouveau"};*/
+// POST : SAVE or UPDATE
+app.post('/flow-des-mots/upload_publication', function(req, res,next) {
+var publication = JSON.parse(req.body.publication); // explicit JSON.parse() needed here because multipart / formData / upload
+//console.log("posting or reposting new publication :" +JSON.stringify(publication));
+
+if (!req.files){
+    //console.log('No files were uploaded.');
+}
+ else{
+  // req.files.fileNameXyz (ici .imageFile et .detailsFile) 
+  let imageFile = req.files.imageFile;
+  if(imageFile){
+	  // Use the mv() method to place the file somewhere on your server
+	  imageFile.mv('./front-end/posts/images/' + imageFile.name, function(err) {
+		if (err)
+		  console.log(imageFile.name + " was not upload");
+		else 
+		  console.log(imageFile.name + " was upload in ./front-end/posts/images");
+	  });
+  }
+ }
+...
+}
+...
+
