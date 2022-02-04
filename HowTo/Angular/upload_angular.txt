@@ -19,6 +19,7 @@
 ...
 export class AdminNewsComponent implements OnInit {
 ...
+imageFileToUpload: File = null;
 
 
 @ViewChild('f_imageFile' , {static : false}) 
@@ -43,7 +44,7 @@ onSubmit(){
     formData.append('imageFile' , this.imageFileToUpload); //may be null
     formData.append('publication' , JSON.stringify(this.selectedPublication));
     //NB: JSON "publication" data will be sent as a subpart of formData !!!!	
-    this._publicationService.uploadPublicationFormaDataObservable(formData)
+    this._publicationService.uploadPublicationFormDataObservable(formData)
         .subscribe(
           sentPublication => { console.log("sent publication:" + JSON.stringify(sentPublication));
                                this.msgSaveOrUpdate="publication bien envoyée";
@@ -58,6 +59,22 @@ onSubmit(){
 
 ...
 }
+
+
+========
+export class Publication /* news publication/post */{
+   
+    titre : string ; // 'titre du post"
+    fichier_image_name : string; // éventuelle image
+    //...
+}
+==========
+dans le service angular:
+
+public uploadPublicationFormDataObservable(publicationFormData : FormData):Observable<Publication> {
+    let uploadPublicationUrl : string = "/news-api/private/role_publisher/upload_publication";
+    return this._http.post<Publication>(uploadPublicationUrl ,publicationFormData );
+    }
 
 
 
