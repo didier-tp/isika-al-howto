@@ -1,0 +1,7 @@
+Si besoin d'ajouter des autorisations CORS dans appli SpringBoot,
+
+@CrossOrigin("*") à coté de @RestController
+ou mieux encore (à peu près)
+ @CrossOrigin(origins="*" , allowedHeaders ="*" ,
+                         methods = {RequestMethod.GET , RequestMethod.POST , RequestMethod.PUT , RequestMethod.DELETE}
+  ) 
